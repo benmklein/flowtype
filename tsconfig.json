@@ -1,0 +1,19 @@
+
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ES6",
+    "allowJs": true,
+    "checkJs": true,
+    "outDir": "./dist",
+    "types": ["ace"],
+    "baseUrl": "./",
+    "paths": {
+      "ace": ["./node_modules/@types/ace/index.d.ts"],
+      "ace-builds": ["./node_modules/ace-builds/src-noconflict/ace"],
+      "htmx.org": ["./node_modules/htmx.org/dist/htmx.js"]
+    }
+  },
+  "include": ["src/*.js", "src/*.ts"],
+  "exclude": ["dist"]
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Editing Practice</title>
+    <script src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/dist/index.js" type="module" defer></script>
+    <script src="/dist/bundle.js" defer></script>
+    <style type="text/css" media="screen">
+    #editor, #goaleditor { 
+    position: relative;
+    width: 700px;
+    }
+    </style>
+  </head>
+  <body>
+    <section class="bg-white dark:bg-gray-900">
+      <div class="container grid grid-cols-1 gap-8 px-4 py-12 mx-auto grid-cols-2 h-screen">
+        <div class="flex max-w-full flex-col items-center mx-auto text-center px-4">
+          <div>
+            <h2 class="text-3xl font-semibold tracking-tight text-gray-800 dark:text-white inline-block">
+              Your Score: 
+            </h2>
+
+            <h2 id="scoreBox" class="text-3xl font-semibold tracking-tight text-gray-800 dark:text-white inline-block">
+              0
+            </h2>
+          </div>
+          <div id="editor" class="w-full flex-1 resize-none">Modify your text to match.</div>
+
+          <div id="feedback"></div>
+
+        </div>
+
+        <div id="goalbox" class="flex flex-col items-center max-w-full mx-auto text-center">
+          <h2 class="text-3xl font-semibold tracking-tight text-gray-800 dark:text-white">
+            Goal Text
+          </h2>
+
+          <div id="goaleditor" class="w-full flex-1 resize-none">Make your text into this.</div>
+
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
