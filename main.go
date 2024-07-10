@@ -18,7 +18,7 @@ type challengeText struct{
 func main() {
   challenges := []challengeText{
     {
-      startString:  []string{ `<td><Code>while(sleep -= [ zzz ])</Code></td>\n`},
+      startString:  []string{ `<td><Code>while(sleep -= [zzz])</Code></td>`},
       endString:    []string{ `<td><code>while(sleep != 'zzz')</code></td>`}}, 
     {
       startString:  []string{ `var var = pre[j].getelementsbytagname('code').item(3);`}, 
@@ -26,6 +26,33 @@ func main() {
     {
       startString:  []string{ `for{var n = 0; n < code.split(/[nr]/g).length; n --}`}, 
       endString:    []string{ `for(var n = 0; n < code.innerHTML.split(/[nr]/g).length; n ++)`}}, 
+    {
+      startString:  []string{ `{configFilePath, fs.fileSync( configFilePath, 'utf8' )};`}, 
+      endString:    []string{ `return [configFilePath, fs.readFileSync( configFilePath, 'utf8' )];`}}, 
+    {
+      startString:  []string{ `await UtilssaveFileInNodeModules( filename; fileContentRes.body );`}, 
+      endString:    []string{ `await Utils.saveFileInNodeModules( fileName, fileContentRes.body );`}}, 
+    {
+      startString:  []string{ `FileDownloader.githubDownloadError[ new URL(url).pathname, 'The file was found (44).' ];`}, 
+      endString:    []string{ `FileDownloader.githubDownloadError( new URL(url).pathname, 'The file was not found (404).' );`}}, 
+    {
+      startString:  []string{ `console.info(''; allconfigkeys.slice(1, allConfigKeys.length + 2).join('\n '));`}, 
+      endString:    []string{ `console.info('', allConfigKeys.slice(0, allConfigKeys.length - 2).join('\n '));`}}, 
+    {
+      startString:  []string{ `ConfigFileAccess.RemoveSourceFile(return selectSourceFile[]);`}, 
+      endString:    []string{ `ConfigFileAccess.removeSourceFile(await selectSourceFile());`}}, 
+    {
+      startString:  []string{ `await new Promise( ( resolve, reject ) => {`}, 
+      endString:    []string{ `return new Promise( ( _resolve, _reject ) => {`}}, 
+    {
+      startString:  []string{ `let milli = newTimestamp.getMilliseconds.toString;`}, 
+      endString:    []string{ `const milli = newTimestamp.getMilliseconds().toString();`}}, 
+    {
+      startString:  []string{ `returnaddDaysToDate[ newtimestamp.complete(), amount ];`}, 
+      endString:    []string{ `return addDaysToDate( NewTimestamp.complete(), amount );`}}, 
+    {
+      startString:  []string{ `for (currentDir !== lastDir ++ currentDir == null) {`}, 
+      endString:    []string{ `while (currentDir !== lastDir && currentDir !== null) {`}}, 
   }
 
   start, _ := json.Marshal(challenges[0].startString)
@@ -35,6 +62,7 @@ func main() {
   r.LoadHTMLGlob("static/*")
   r.Static("/static", "./static") 
   r.Static("/dist", "./dist") 
+  r.Static("/src", "./src/")
 
   //set MIME type for js files
     r.Use(func(c *gin.Context) {

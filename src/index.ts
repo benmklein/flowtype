@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   editor.session.setMode("ace/mode/javascript");
   editor.setKeyboardHandler("ace/keyboard/vim");
   editor.setOptions({
-    fontSize: "12pt"
+    fontSize: "14pt"
   })
 
   goaleditor = Ace.edit("goaleditor")
@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   goaleditor.session.setMode("ace/mode/javascript")
   goaleditor.setReadOnly(true)
   goaleditor.setOptions({
-    fontSize: "12pt"
+    fontSize: "14pt"
   })
   
-  scoreBox = document?.getElementById('scoreBox')
+  scoreBox = document?.getElementById('scorebox')
 
   setInterval(getLines, 5000)
 
@@ -39,14 +39,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 document.body.addEventListener("getChallenges", function(e){
     console.log("getChallenges trigged")
-    const editUM = editor.session.getUndoManager()
-    const goalUM = goaleditor.session.getUndoManager()
+    const editUM =  editor.session.getUndoManager() 
 
     editor.session.getDocument().insertFullLines(editor.session.getLength() + 1, (<CustomEvent>e).detail.startString)
     goaleditor.session.getDocument().insertFullLines(goaleditor.session.getLength() + 1, (<CustomEvent>e).detail.endString)
 
-    editor.session.setUndoManager(editUM)
-    goaleditor.session.setUndoManager(goalUM)
+  //@ts-ignore
+  editUM.$undoStack.pop()
 })
 
 function normalizeText(text: string) {
@@ -65,10 +64,12 @@ function compareTextLines() {
     }
   }
   console.log("Matching lines:", ...matchingList)
+  console.log(scoreBox)
   matchingList.forEach( (e)=> {
     editor.session.getDocument().removeFullLines(e, e)
     goaleditor.session.getDocument().removeFullLines(e, e)
     score++
+    console.log(score)
     if (scoreBox){
       scoreBox.innerHTML = score.toString()
     }

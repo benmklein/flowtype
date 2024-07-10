@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "webpack" 
+    "build": "webpack"
   },
   "dependencies": {
     "@types/ace": "^0.0.52",
@@ -8,6 +8,7 @@
     "htmx.org": "^1.9.12"
   },
   "devDependencies": {
+    "tailwindcss": "^3.4.4",
     "ts-loader": "^9.5.1",
     "webpack": "^5.92.1",
     "webpack-cli": "^5.1.4"

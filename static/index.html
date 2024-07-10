@@ -5,44 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Editing Practice</title>
     <script src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/dist/index.js" type="module" defer></script>
+    <!-- <script src="/dist/index.js" type="module" defer></script> -->
     <script src="/dist/bundle.js" defer></script>
-    <style type="text/css" media="screen">
-    #editor, #goaleditor { 
-    position: relative;
-    width: 700px;
-    }
-    </style>
+    <link rel="stylesheet" href="/dist/output.css">
   </head>
-  <body>
-    <section class="bg-white dark:bg-gray-900">
-      <div class="container grid grid-cols-1 gap-8 px-4 py-12 mx-auto grid-cols-2 h-screen">
-        <div class="flex max-w-full flex-col items-center mx-auto text-center px-4">
-          <div>
-            <h2 class="text-3xl font-semibold tracking-tight text-gray-800 dark:text-white inline-block">
-              Your Score: 
-            </h2>
 
-            <h2 id="scoreBox" class="text-3xl font-semibold tracking-tight text-gray-800 dark:text-white inline-block">
-              0
-            </h2>
-          </div>
-          <div id="editor" class="w-full flex-1 resize-none">Modify your text to match.</div>
+  <body class ="bg-black dark:bg-gray-900 h-screen">
+        <h2 id="scorebox" class="text-3xl font-semibold tracking-tight text-gray-800 dark:text-white inline-block">
+          0
+        </h2>
+    <div class="absolute left-2/4 -translate-x-2/4 mx-auto top-2/4 -translate-y-2/4 flex gap-8 px-4 py-12">
 
-          <div id="feedback"></div>
 
-        </div>
 
-        <div id="goalbox" class="flex flex-col items-center max-w-full mx-auto text-center">
-          <h2 class="text-3xl font-semibold tracking-tight text-gray-800 dark:text-white">
-            Goal Text
-          </h2>
+      <div class="flex flex-col">
 
-          <div id="goaleditor" class="w-full flex-1 resize-none">Make your text into this.</div>
 
-        </div>
+        <div id="editor"> Modify your text to match. Test text. </div>
+
+
       </div>
-    </section>
+      <div id="goalbox" class="text-center">
+
+        <div id="goaleditor" class="resize-none"> Make your text into this. </div>
+
+      </div>
+
+    </div>
+
   </body>
 </html>
